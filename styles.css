@@ -575,8 +575,124 @@ code.chord-sheet-chord-block-preview > .chord-sheet-section-header,
 }
 
 
+/* Piano Keyboard */
+
+.chord-sheet-piano-keyboard {
+	display: block;
+	margin-top: 2px;
+}
+
+.chord-sheet-piano-wk {
+	fill: #e8e8e8;
+	stroke: #aaa;
+	stroke-width: 0.5;
+}
+
+.theme-dark .chord-sheet-piano-wk {
+	fill: #d0d0d0;
+	stroke: #999;
+}
+
+.chord-sheet-piano-wk.chord-sheet-piano-active {
+	fill: color-mix(in srgb, var(--text-accent) 40%, #e8e8e8);
+}
+
+.theme-dark .chord-sheet-piano-wk.chord-sheet-piano-active {
+	fill: color-mix(in srgb, var(--text-accent) 50%, #d0d0d0);
+}
+
+.chord-sheet-piano-sep {
+	stroke: #aaa;
+	stroke-width: 0.5;
+}
+
+.theme-dark .chord-sheet-piano-sep {
+	stroke: #999;
+}
+
+.chord-sheet-piano-bk {
+	fill: #1a1a1a;
+	stroke: #000;
+	stroke-width: 0.3;
+}
+
+.theme-dark .chord-sheet-piano-bk {
+	fill: #111;
+}
+
+.chord-sheet-piano-bk.chord-sheet-piano-active {
+	fill: var(--text-accent);
+}
+
+.chord-sheet-piano-dot {
+	fill: var(--text-accent);
+}
+
+.chord-sheet-piano-dot-on-black {
+	fill: #fff;
+}
+
+.chord-sheet-piano-dot-bass {
+	stroke: #fff;
+	stroke-width: 1.2;
+}
+
+.chord-sheet-piano-dot-on-black.chord-sheet-piano-dot-bass {
+	fill: var(--text-accent);
+	stroke: #fff;
+	stroke-width: 1.2;
+}
+
+/* Note labels below keyboard */
+.chord-sheet-piano-label {
+	fill: var(--text-muted);
+	font-family: var(--font-monospace);
+}
+
+.chord-sheet-piano-label-bass {
+	fill: var(--text-accent);
+	font-weight: bold;
+}
+
+.chord-sheet-piano-label-overflow {
+	fill: var(--text-faint);
+	font-style: italic;
+}
+
+/* Print support */
+.print .chord-sheet-piano-wk.chord-sheet-piano-active {
+	fill: #ccc;
+}
+
+.print .chord-sheet-piano-dot,
+.print .chord-sheet-piano-dot-bass {
+	fill: #333;
+	stroke: none;
+}
+
+.print .chord-sheet-piano-dot-on-black {
+	fill: #fff;
+}
+
+.print .chord-sheet-piano-label {
+	fill: #555;
+}
+
+.print .chord-sheet-piano-label-bass {
+	fill: #000;
+}
+
+/* Piano diagram spacing and position chooser */
+.chord-sheet-chord-diagram:has(.chord-sheet-piano-keyboard) {
+	padding: 4px 6px;
+}
+
+.chord-sheet-chord-diagram:has(.chord-sheet-piano-keyboard) .chord-sheet-position-chooser {
+	margin-top: 2px;
+}
+
 /* Chord Boxes */
-.chord-sheet-chord-box svg {
+.chord-sheet-chord-box svg:not(.chord-sheet-piano-keyboard) {
 	margin-top: -10%;
 	margin-bottom: -5%;
 }
@@ -686,7 +802,7 @@ code.chord-sheet-chord-block-preview > .chord-sheet-section-header,
 		margin-bottom: 1rem;
 	}
 
-	.chord-sheet-chord-overview svg {
+	.chord-sheet-chord-overview svg:not(.chord-sheet-piano-keyboard) {
 		margin-top: -15%;
 	}
 }

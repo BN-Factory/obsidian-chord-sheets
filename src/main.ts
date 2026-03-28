@@ -144,7 +144,7 @@ export default class ChordSheetsPlugin extends Plugin implements IChordSheetsPlu
 			}
 		});
 
-		for (const instrument of Object.keys(ChordsDB) as Instrument[]) {
+		for (const instrument of [...Object.keys(ChordsDB), "piano"] as Instrument[]) {
 			this.addCommand({
 				id: `block-instrument-change-${instrument}`,
 				name: `Change instrument for the current chord block to ${instrument}`,

@@ -2,6 +2,7 @@ import {chordSequenceString, findDbChord, Instrument, UserDefinedChord} from "./
 import {ChordBox} from "@chordbook/charts";
 import ChordsDB, {ChordDef} from "@tombatossals/chords-db";
 import {ChordToken} from "./sheet-parsing/tokens";
+import {makePianoChordDiagram} from "./pianoChordRenderer";
 
 type ChordBoxParams = Parameters<ChordBox["draw"]>[0];
 
@@ -208,7 +209,11 @@ function updateChordPosition(containerEl: HTMLElement, numPositions: number, pos
 	}
 }
 
-export function makeChordDiagram(instrument: Instrument, chordToken: ChordToken, width = 100, position = 0) {
+export function makeChordDiagram(instrument: Instrument, chordToken: ChordToken, width = 100, position = 0, showControls = true) {
+	if (instrument === "piano") {
+		return makePianoChordDiagram(chordToken, width, showControls);
+	}
+
 	const containerEl = document.createElement("div");
 	containerEl.addClass("chord-sheet-chord-diagram");
 	const chordBox: HTMLDivElement = document.createElement('div');
@@ -329,7 +334,10 @@ export function makeChordDiagram(instrument: Instrument, chordToken: ChordToken,
 
 export function makeChordOverview(instrument: Instrument, container: HTMLElement, chordTokens: ChordToken[], width?: number) {
 	for (const chordToken of chordTokens) {
-		container.appendChild(makeChordDiagram(instrument, chordToken, width));
+		const chordBox = makeChordDiagram(instrument, chordToken, width);
+		if (chordBox) {
+			container.appendChild(chordBox);
+		}
 	}
 	container.dataset.chordSequence = chordSequenceString(chordTokens);
 	container.dataset.instrument = instrument;

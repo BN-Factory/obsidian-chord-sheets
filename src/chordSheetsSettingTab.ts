@@ -93,6 +93,7 @@ export class ChordSheetsSettingTab extends PluginSettingTab {
 				.addOption("ukulele-d-tuning", "Ukulele (D tuning)")
 				.addOption("ukulele-baritone", "Ukulele (Baritone)")
 				.addOption("mandolin", "Mandolin")
+				.addOption("piano", "Piano")
 				.setValue(this.plugin.settings.defaultInstrument)
 				.onChange(async (value: Instrument) => {
 					this.plugin.settings.defaultInstrument = value;

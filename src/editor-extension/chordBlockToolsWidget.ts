@@ -110,6 +110,7 @@ export class ChordBlockToolsWidget extends WidgetType {
 		el.append(instrumentOption("guitar", "Guitar"));
 		el.append(instrumentOption("ukulele", "Ukulele"));
 		el.append(instrumentOption("mandolin", "Mandolin"));
+		el.append(instrumentOption("piano", "Piano"));
 
 
 		el.append(document.createElement("hr"));

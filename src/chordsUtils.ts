@@ -3,7 +3,7 @@ import {ChordDef, IChordsDB, InstrumentChords} from "@tombatossals/chords-db";
 
 import {ChordToken} from "./sheet-parsing/tokens";
 
-export type Instrument = keyof IChordsDB;
+export type Instrument = keyof IChordsDB | "piano";
 
 
 export interface UserDefinedChord {

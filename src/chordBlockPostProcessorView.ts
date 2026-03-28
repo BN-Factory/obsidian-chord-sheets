@@ -224,7 +224,12 @@ export class ChordBlockPostProcessorView extends MarkdownRenderChild {
 				return {popper};
 			},
 			onShow(instance) {
-				instance.popper.appendChild(makeChordDiagram(instrument, token, diagramWidth));
+				const chordBox = makeChordDiagram(instrument, token, diagramWidth, 0, false);
+				if (chordBox) {
+					instance.popper.appendChild(chordBox);
+				} else {
+					return false;
+				}
 			},
 			onHidden(instance) {
 				instance.popper.empty();

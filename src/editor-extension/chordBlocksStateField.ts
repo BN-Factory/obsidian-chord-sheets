@@ -470,7 +470,7 @@ function parseChordBlocks(state: EditorState, from: number, to: number, parseCho
 					const chordBlockStartMatch = line.text.match(`^(?:~{3,}|\`{3,})(${settings.blockLanguageSpecifier})\\b-?(.*)`);
 					if (chordBlockStartMatch) {
 						if (chordBlockStartMatch[2]) {
-							if (!Object.keys(ChordsDB).includes(chordBlockStartMatch[2])) {
+							if (!Object.keys(ChordsDB).includes(chordBlockStartMatch[2]) && chordBlockStartMatch[2] !== "piano") {
 								console.error(`Unknown instrument: ${chordBlockStartMatch[2]}`);
 								return false;
 							}
